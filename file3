@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Gallery Animation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        img {
+            width: 150px;
+            height: 150px;  
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+            object-fit: cover; 
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("img").click(function(){
+                $(this).animate({
+                    opacity: 0.5,
+                    width: "250px",
+                    height: "250px"   
+                }, 1000).animate({
+                    opacity: 1,
+                    width: "150px",
+                    height: "150px"
+                }, 1000);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>jQuery Image Gallery</h2>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Dog_Breeds.jpg/1024px-Dog_Breeds.jpg" alt="img1">
+    <img src="https://www.dennemeyer.com/fileadmin/a/blog/Everyday_IP_Spreading_the_word_about_mobile_phones/Everyday-IP_Spreading-the-word-about-mobile-phones_12.jpg" alt="img2">
+    <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29kZXxlbnwwfHwwfHx8MA%3D%3D" alt="img3">
+</body>
+</html>
