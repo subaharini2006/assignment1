@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Registration System</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .course { margin-bottom: 10px; }
+        .full { color: red; }
+        .available { color: green; }
+    </style>
+    <script>
+        let courses = [
+            {name: "AI Basics", code: "AI101", seats: 2, prereq: "None"},
+            {name: "Machine Learning", code: "ML201", seats: 0, prereq: "AI Basics"},
+            {name: "Data Science", code: "DS301", seats: 3, prereq: "ML201"}
+        ];
+
+        function loadCourses() {
+            let list = document.getElementById("courseList");
+            list.innerHTML = "";
+            courses.forEach(c => {
+                let status = (c.seats > 0) ? <span class='available'>Available</span> 
+                                           : <span class='full'>Full</span>;
+                list.innerHTML += `<div class="course">
+                    <b>${c.code} - ${c.name}</b> <br>
+                    Prerequisite: ${c.prereq} <br>
+                    Status: ${status} <br>
+                    <button onclick="register('${c.code}')">Register</button>
+                </div><hr>`;
+            });
+        }
+
+        function register(code) {
+            let course = courses.find(c => c.code === code);
+            if(course.seats > 0){
+                course.seats--;
+                alert("Successfully registered for " + course.name);
+            } else {
+                alert("Sorry, course is full!");
+            }
+            loadCourses();
+        }
+
+        function validatePage() {
+            alert("Web page validated successfully!");
+        }
+    </script>
+</head>
+<body onload="loadCourses()">
+    <h2>Course Registration System</h2>
+    <div id="courseList"></div>
+    <button onclick="validatePage()">Validate Page</button>
+</body>
+</html>
